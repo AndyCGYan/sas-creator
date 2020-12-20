@@ -21,7 +21,7 @@ on early-fs
     mkdir /apex/com.android.vndk.v28 0777 root root
     mkdir /apex/com.android.sdkext 0777 root root
     mkdir /apex/com.android.i18n 0777 root root
-    mkdir /apex/com.android.art.debug 0777 root root
+    mkdir /apex/com.android.art 0777 root root
     mkdir /apex/com.android.media.swcodec 0777 root root
     mkdir /apex/com.android.media 0777 root root
     mkdir /apex/com.android.os.statsd 0777 root root
@@ -47,7 +47,8 @@ on early-fs
     mount none /system_ext/apex/com.android.vndk.v28 /apex/com.android.vndk.v28 bind
     mount none /system_ext/apex/com.android.sdkext /apex/com.android.sdkext bind
     mount none /system_ext/apex/com.android.i18n /apex/com.android.i18n bind
-    mount none /system_ext/apex/com.android.art.debug /apex/com.android.art.debug bind
+    mount none /system_ext/apex/com.android.art.debug /apex/com.android.art bind
+    mount none /system_ext/apex/com.android.art.release /apex/com.android.art bind
     mount none /system_ext/apex/com.android.media.swcodec /apex/com.android.media.swcodec bind
     mount none /system_ext/apex/com.android.media /apex/com.android.media bind
     mount none /system_ext/apex/com.android.os.statsd /apex/com.android.os.statsd bind
@@ -67,8 +68,10 @@ on early-fs
     mount none /system_ext/apex/com.android.conscrypt /apex/com.android.conscrypt bind
     mount none /system_ext/apex/com.android.wifi /apex/com.android.wifi bind
 
-    mkdir /apex/com.android.art 0777 root root
-    mount none /apex/com.android.art.debug /apex/com.android.art bind
+    mkdir /apex/com.android.art.debug 0777 root root
+    mount none /apex/com.android.art /apex/com.android.art.debug bind
+    mkdir /apex/com.android.art.release 0777 root root
+    mount none /apex/com.android.art /apex/com.android.art.release bind
 
     exec -- /system/bin/apexd --bootstrap
 
